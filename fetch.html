@@ -3,6 +3,7 @@
   <body>
     <article></article>
     <input type="button" value="fetch" onclick="
+      /*
       fetch('html').then  (
                             function(reponse){
                               reponse.text().then(
@@ -12,6 +13,11 @@
                                                   )
                             }
                           )
+      */
+      function callbackme(){
+        console.log('response end');
+      }
+      fetch('html').then(callbackme);
     ">
   </body>
 </html>
