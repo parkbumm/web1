@@ -17,7 +17,7 @@ var Body = {
   }
 }
 function nightDayHandler(self){
-  var target = document.querySelector('body');
+  //var target = document.querySelector('body');
   if(self.value === 'night'){
     Body.setBackgroundColor('black');
     Body.setColor('white');
