@@ -7,6 +7,16 @@
   <script src="colors.js"></script>
 </head>
 <body>
+  <article>
+
+  </article>
+  <input type="button" value="fetch" onclick="
+      fetch('html').then(function(response){
+      response.text().then(function(text){
+        document.querySelector('article').innerHTML = text;
+        })
+      })
+  ">
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="nightDayHandler(this);">
   <ol>
