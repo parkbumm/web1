@@ -72,6 +72,9 @@ function iteratorFor(items) {
     }
   }
 
+
+
+
   return iterator
 }
 
