@@ -6,15 +6,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script>
+    function checkLoginStatus(){
+      var loginBtn = document.querySelector('#loginBtn');
+      if(gauth.isSignedIn.get()){
+        console.log('logined');
+        loginBtn.value = 'Logout';
+      } else {
+        console.log('logouted');
+        loginBtn.value = 'Login';
+      }
+    }
     function init(){
       console.log('init');
       gapi.load('auth2', function() {
         console.log('auth2');
-        var gauth = gapi.auth2.init({
+        window.gauth = gapi.auth2.init({
           client_id:'1065662281786-3lf9asg0mo5htbnb7oqm2ikkqqs7b4ae.apps.googleusercontent.com'
         })
         gauth.then(function(){
           console.log('googleAuth success');
+          checkLoginStatus();
         }, function(){
           console.log('googleAuth fail');
         });
@@ -23,6 +34,19 @@
   </script>
 </head>
 <body>
+  <input type="button" id="loginBtn" value="checking..." onclick="
+    if(this.value === 'Login'){
+      gauth.signIn().then(function(){
+        console.log('gauth.signIn()');
+        checkLoginStatus();
+      });
+    } else {
+      gauth.signOut().then(function(){
+        console.log('gauth.signOut()');
+        checkLoginStatus();
+      });
+    }
+  ">
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
