@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
-  <meta name="google-signin-client_id" content="1065662281786-3lf9asg0mo5htbnb7oqm2ikkqqs7b4ae.apps.googleusercontent.com">
   <script>
     function init(){
       console.log('init');
@@ -22,18 +21,8 @@
       });
     }
   </script>
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
-    }
-  </script>
 </head>
 <body>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
