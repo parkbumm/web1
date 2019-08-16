@@ -8,12 +8,16 @@
   <script>
     function checkLoginStatus(){
       var loginBtn = document.querySelector('#loginBtn');
+      var nameTxt = document.querySelector('#name');
       if(gauth.isSignedIn.get()){
         console.log('logined');
         loginBtn.value = 'Logout';
+        var profile = gauth.currentUser.get().getBasicProfile();
+        nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
       } else {
         console.log('logouted');
         loginBtn.value = 'Login';
+        nameTxt.innerHTML = '';
       }
     }
     function init(){
@@ -34,9 +38,11 @@
   </script>
 </head>
 <body>
-  <input type="button" id="loginBtn" value="checking..." onclick="
+  <span id="name"></span><input type="button" id="loginBtn" value="checking..." onclick="
     if(this.value === 'Login'){
-      gauth.signIn().then(function(){
+      gauth.signIn({
+        scope:'https://www.googleapis.com/auth/calendar'
+      }).then(function(){
         console.log('gauth.signIn()');
         checkLoginStatus();
       });
